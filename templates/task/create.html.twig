@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'une tâche
+{% endblock %}
+
+{% block body %}
+	<h1>Nouvelle Tâche</h1>
+
+	<div class="form">
+		{{form_start(formView)}}
+		{{form_widget(formView)}}
+		{{form_end(formView)}}
+	</div>
+{% endblock %}

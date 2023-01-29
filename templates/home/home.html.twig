@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestionnaire de Tâche !
+{% endblock %}
+
+{% block body %}
+
+	<nav class="nav">
+		<div class="nav-bar">
+
+			<div class="nav-bar-right">
+				<button type="submit" onclick="location.href='{{path('app_login')}}'">Connexion</button>
+				<button type="submit" onclick="location.href='{{path('app_logout')}}'">Déconnexion</button>
+			</div>
+		</div>
+	</nav>
+
+
+	<header>
+		<div class="header-content">
+			<p>Bonjour "mettre le nom utlisateur"</p>
+			<div>
+				<button type="submit" onclick="location.href='{{ path('app_task_create') }}'">
+					<i class="fa-sharp fa-solid fa-plus"></i>
+					Ajouter une tâche
+				</button>
+			</div>
+		</div>
+	</header>
+
+
+	<div class="table">
+		<table class="table-container">
+			<thead>
+				<tr>
+					<th>Nom de la tâche</th>
+					<th>Statut</th>
+					<th>Date de Fin</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for i in task %}
+					<tr>
+						<td>{{i.name}}</td>
+						<td>{{i.status}}</td>
+
+						<td>{{i.dateOfEnd.format('d-m-y')}}</td>
+
+						<td>
+							<a href="{{ path("app_task_edit", {id: i.id}) }}">
+								<i class="fa-solid fa-pen"></i>
+							</a>
+							<a href="{{ path('app_task_delete', {id: i.id}) }}">
+								<i class="fa-sharp fa-solid fa-trash-can"></i>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</tbody</table>
+	</div>
+{% endblock %}
